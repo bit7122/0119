@@ -4,7 +4,10 @@ import { Category, Unit } from './types';
 
 export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units: Unit[] }> = {
   [Category.LENGTH]: {
-    icon: <i className="fas fa-ruler-horizontal"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">📏</span>
+            <i className="fas fa-pencil-alt text-xs text-pink-300"></i>
+          </span>,
     units: [
       { label: 'Meter (m)', value: 'm', ratio: 1 },
       { label: 'Kilometer (km)', value: 'km', ratio: 1000 },
@@ -17,7 +20,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.WEIGHT]: {
-    icon: <i className="fas fa-weight-hanging"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">⚖️</span>
+            <i className="fas fa-apple-alt text-xs text-red-300"></i>
+          </span>,
     units: [
       { label: 'Kilogram (kg)', value: 'kg', ratio: 1 },
       { label: 'Gram (g)', value: 'g', ratio: 0.001 },
@@ -27,7 +33,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.TEMPERATURE]: {
-    icon: <i className="fas fa-thermometer-half"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">🌡️</span>
+            <i className="fas fa-sun text-xs text-orange-300"></i>
+          </span>,
     units: [
       { label: 'Celsius (°C)', value: 'C' },
       { label: 'Fahrenheit (°F)', value: 'F' },
@@ -35,7 +44,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.AREA]: {
-    icon: <i className="fas fa-vector-square"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">🗺️</span>
+            <i className="fas fa-flower text-xs text-green-300"></i>
+          </span>,
     units: [
       { label: 'Square Meter (m²)', value: 'm2', ratio: 1 },
       { label: 'Square Kilometer (km²)', value: 'km2', ratio: 1000000 },
@@ -45,7 +57,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.VOLUME]: {
-    icon: <i className="fas fa-faucet-drip"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">💧</span>
+            <i className="fas fa-coffee text-xs text-blue-300"></i>
+          </span>,
     units: [
       { label: 'Liter (L)', value: 'L', ratio: 1 },
       { label: 'Milliliter (mL)', value: 'ml', ratio: 0.001 },
@@ -55,7 +70,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.SPEED]: {
-    icon: <i className="fas fa-tachometer-alt"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">🚀</span>
+            <i className="fas fa-wind text-xs text-teal-300"></i>
+          </span>,
     units: [
       { label: 'Meter/second (m/s)', value: 'ms', ratio: 1 },
       { label: 'Km/hour (km/h)', value: 'kmh', ratio: 0.277778 },
@@ -64,7 +82,10 @@ export const CATEGORIES_CONFIG: Record<Category, { icon: React.ReactNode, units:
     ]
   },
   [Category.DATA]: {
-    icon: <i className="fas fa-database"></i>,
+    icon: <span className="flex flex-col items-center">
+            <span className="text-2xl mb-1">💾</span>
+            <i className="fas fa-cloud text-xs text-purple-300"></i>
+          </span>,
     units: [
       { label: 'Byte (B)', value: 'B', ratio: 1 },
       { label: 'Kilobyte (KB)', value: 'KB', ratio: 1024 },

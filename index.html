@@ -4,14 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OmniUnit AI - Smart Unit Converter</title>
-    <meta name="theme-color" content="#2563eb">
+    <title>OmniUnit AI - Spring Edition</title>
+    <meta name="theme-color" content="#fdf2f8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055644.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+        100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+      }
+      .petal {
+        position: fixed;
+        pointer-events: none;
+        z-index: 1;
+        animation: float 6s ease-in-out infinite;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      /* 모바일 터치 시 강조 효과 제거 */
+      * { -webkit-tap-highlight-color: transparent; }
+    </style>
 <script type="importmap">
 {
   "imports": {
@@ -19,15 +37,37 @@
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "vite": "https://esm.sh/vite@^6.0.11",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.3.4"
   }
 }
 </script>
 </head>
-<body class="bg-gray-50 min-h-screen overscroll-none">
+<body class="bg-[#fdf2f8] min-h-screen overscroll-none touch-manipulation overflow-x-hidden">
+    <!-- Floating Petals Background -->
+    <div class="petal text-pink-200" style="top: 10%; left: 5%; font-size: 20px;"><i class="fas fa-leaf"></i></div>
+    <div class="petal text-pink-300" style="top: 25%; right: 10%; font-size: 15px; animation-delay: 1s;"><i class="fas fa-seedling"></i></div>
+    <div class="petal text-yellow-200" style="bottom: 15%; left: 15%; font-size: 24px; animation-delay: 2s;"><i class="fas fa-sun"></i></div>
+    <div class="petal text-green-200" style="bottom: 10%; right: 5%; font-size: 18px; animation-delay: 3s;"><i class="fas fa-leaf"></i></div>
+    
     <div id="root"></div>
-    <!-- Vercel 등 빌드 환경에서 진입점을 명시하기 위해 추가 -->
     <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(reg => {
+            reg.onupdatefound = () => {
+              const installingWorker = reg.installing;
+              installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // 업데이트 완료 시 알림 (선택 사항)
+                  console.log('New content is available; please refresh.');
+                }
+              };
+            };
+          }).catch(err => console.log('SW registration failed:', err));
+        });
+      }
+    </script>
 </body>
 </html>
